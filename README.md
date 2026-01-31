@@ -1,6 +1,6 @@
 # Quotewise MCP Server
 
-Semantic quote search for AI assistants. 608K+ quotes searchable by meaning, with source transparency via QuoteSightings.
+Semantic quote search for AI assistants. Search quotes by meaning, with source transparency via QuoteSightings.
 
 [![npm version](https://badge.fury.io/js/@quotewise/mcp.svg)](https://www.npmjs.com/package/@quotewise/mcp)
 
@@ -46,15 +46,11 @@ Add to your MCP client config:
 
 ### Rate Limits
 
-| Tier | Requests | Auth Required |
-|------|----------|---------------|
-| Anonymous | 20/hour | No |
-| Free | 100/month | Email verification |
-| AI Access | Unlimited | $5/month |
+See [quotewise.io/plans](https://quotewise.io/plans/) for current rate limits and pricing.
 
 ## Tools Available
 
-13 tools for quote discovery, attribution lookup, and collection management:
+Tools for quote discovery, attribution lookup, and collection management:
 
 ### Discovery
 - `quotes_about` — Semantic search by concept ("courage during setbacks")
