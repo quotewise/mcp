@@ -54,22 +54,30 @@ Tools for quote discovery, attribution lookup, and collection management:
 
 ### Discovery
 - `quotes_about` — Semantic search by concept ("courage during setbacks")
-- `quotes_by` — Find quotes by a specific person
+- `quotes_by` — Find quotes by a specific person  
 - `quotes_from` — Find quotes from a specific source/book
 - `quotes_like` — Find similar quotes via vector similarity
 - `quotes_containing` — Exact phrase search
 - `who_said` — Attribution lookup (catches misattributions!)
+- `quote` — Get full details for a single quote (by short code)
 - `quote_random` — Discover random quotes
 
 ### Exploration
 - `originators` — Search/browse authors and speakers
 - `originators_like` — Find similar authors
 - `sources` — Search/browse books, speeches, works
+- `quote_relations` — Find related quotes (similar themes, same author, etc.)
+- `search_proverbs` — Search proverb database for wise sayings
 
 ### Collections (requires auth)
 - `collection` — Create, list, update, delete collections
 - `collection_quotes` — Add/remove quotes from collections
-- `status` — Check auth status and rate limits
+
+### Utilities
+- `ping` — Health check (test connectivity)
+- `auth_status` — Check authentication status and rate limits
+- `flag_content` — Flag inappropriate or misattributed quotes
+- `propose_edit` — Suggest corrections to quote text or attribution
 
 ## Filters
 
