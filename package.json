@@ -1,6 +1,6 @@
 {
   "name": "@quotewise/mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Setup helper for Quotewise MCP Server - semantic quote search for AI assistants",
   "keywords": [
     "mcp",
