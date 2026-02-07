@@ -1,0 +1,36 @@
+{
+  "name": "@quotewise/mcp",
+  "version": "1.0.0",
+  "description": "Setup helper for Quotewise MCP Server - semantic quote search for AI assistants",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "quotes",
+    "semantic-search",
+    "ai",
+    "claude",
+    "quotewise"
+  ],
+  "author": "Quotosaurus LLC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quotewise/mcp.git"
+  },
+  "homepage": "https://quotewise.io/developers/mcp/",
+  "bugs": {
+    "url": "https://github.com/quotewise/mcp/issues"
+  },
+  "bin": {
+    "quotewise-mcp": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "examples/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
