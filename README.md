@@ -2,7 +2,9 @@
 
 Semantic quote search platform. Find quotes by meaning, with source transparency via QuoteSightings.
 
-[![npm version](https://badge.fury.io/js/@quotewise/mcp.svg)](https://www.npmjs.com/package/@quotewise/mcp)
+[![npm version](https://img.shields.io/npm/v/@quotewise/mcp.svg)](https://www.npmjs.com/package/@quotewise/mcp)
+[![npm downloads](https://img.shields.io/npm/dm/@quotewise/mcp.svg)](https://www.npmjs.com/package/@quotewise/mcp)
+[![GitHub repo](https://img.shields.io/github/stars/quotewise/mcp.svg)](https://github.com/quotewise/mcp)
 
 ## Quick Setup
 
