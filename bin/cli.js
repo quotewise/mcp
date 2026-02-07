@@ -118,7 +118,7 @@ function printFooter() {
 🔑 Get API key for more: https://quotewise.io/developers/dashboard/
 
 📚 Full docs: https://quotewise.io/developers/mcp/
-🤖 13 tools: quotes_about, quotes_by, who_said, and more
+🤖 18 tools: quotes_about, quotes_by, who_said, collections, and more
 
 Need help? q@quotewise.io
 `);
