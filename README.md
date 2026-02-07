@@ -1,6 +1,6 @@
 # Quotewise MCP Server
 
-Semantic quote search for AI assistants. Search quotes by meaning, with source transparency via QuoteSightings.
+Semantic quote search platform. Find quotes by meaning, with source transparency via QuoteSightings.
 
 [![npm version](https://badge.fury.io/js/@quotewise/mcp.svg)](https://www.npmjs.com/package/@quotewise/mcp)
 
