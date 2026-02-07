@@ -111,8 +111,8 @@ Every quote includes **QuoteSightings** — citations showing where we found it.
 
 ## Links
 
-- **Docs**: [quotewise.io/developers/mcp](https://quotewise.io/developers/mcp/)
-- **API Reference**: [api.quotewise.io/docs](https://api.quotewise.io/docs/)
+- **MCP Tools**: [quotewise.io/developers/mcp](https://quotewise.io/developers/mcp/)
+- **REST API**: [api.quotewise.io/docs](https://api.quotewise.io/docs/)
 - **Web**: [quotewise.io](https://quotewise.io)
 - **llms.txt**: [mcp.quotewise.io/llms.txt](https://mcp.quotewise.io/llms.txt)
 
