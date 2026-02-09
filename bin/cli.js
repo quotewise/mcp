@@ -114,7 +114,7 @@ function printFooter() {
   console.log(`
 ═══════════════════════════════════════════════════════════════
 
-🆓 Anonymous access: 20 requests/hour (no signup needed)
+🆓 Anonymous access: 100 requests/hour (no signup needed)
 🔑 Get API key for more: https://quotewise.io/developers/dashboard/
 
 📚 Full docs: https://quotewise.io/developers/mcp/
