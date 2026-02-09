@@ -42,7 +42,7 @@ Add to your MCP client config:
 **Anonymous access** works immediately — 20 requests/hour, no signup needed.
 
 **For higher limits**, get an API key:
-1. Visit [quotewise.io/developers/dashboard](https://quotewise.io/developers/dashboard/)
+1. Visit [quotewise.io/developers/mcp](https://quotewise.io/developers/dashboard/)
 2. Create an API key
 3. The MCP server uses OAuth device flow — you'll be prompted on first use
 
