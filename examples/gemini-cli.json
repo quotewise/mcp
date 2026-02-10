@@ -1,8 +1,7 @@
 {
   "mcpServers": {
     "quotewise": {
-      "transport": "http",
-      "url": "https://mcp.quotewise.io/"
+      "httpUrl": "https://mcp.quotewise.io/"
     }
   }
 }
