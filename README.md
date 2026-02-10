@@ -1,6 +1,6 @@
 # Quotewise MCP Server
 
-Semantic quote search platform. Find quotes by meaning, with source transparency via QuoteSightings.
+Semantic quote search for AI assistants. Find quotes by meaning, verify attributions, with source transparency via QuoteSightings.
 
 [![npm version](https://img.shields.io/npm/v/@quotewise/mcp.svg)](https://www.npmjs.com/package/@quotewise/mcp)
 [![npm downloads](https://img.shields.io/npm/dm/@quotewise/mcp.svg)](https://www.npmjs.com/package/@quotewise/mcp)
@@ -8,15 +8,87 @@ Semantic quote search platform. Find quotes by meaning, with source transparency
 
 ## Quick Setup
 
+Run the setup helper to get config for your client:
+
 ```bash
 npx @quotewise/mcp setup
+npx @quotewise/mcp setup claude-desktop
+npx @quotewise/mcp setup gemini
 ```
 
-This prints the configuration for your MCP client (Claude Desktop, Cursor, VS Code, etc.).
+Or follow the client-specific instructions below.
 
-## Manual Configuration
+## Setup by Client
 
-Add to your MCP client config:
+### Claude Code
+
+```bash
+claude mcp add --transport http quotewise https://mcp.quotewise.io/
+```
+
+Verify with `claude mcp list` or `/mcp` inside a session.
+
+### Claude Desktop
+
+Add via Settings > Connectors in the app UI, or add to your config file using the `mcp-remote` bridge:
+
+```json
+{
+  "mcpServers": {
+    "quotewise": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.quotewise.io/"]
+    }
+  }
+}
+```
+
+| OS | Config Path |
+|----|-------------|
+| macOS | `~/Library/Application Support/Claude/claude_desktop_config.json` |
+| Windows | `%APPDATA%\Claude\claude_desktop_config.json` |
+| Linux | `~/.config/Claude/claude_desktop_config.json` |
+
+> **Note:** Claude Desktop does not support remote HTTP servers directly in the config file. The `mcp-remote` bridge runs a local stdio process that proxies to the remote server. Requires Node.js.
+
+### ChatGPT
+
+1. Open ChatGPT Desktop > Settings > Connectors > Advanced > enable **Developer Mode**
+2. Click **Create** and enter `https://mcp.quotewise.io/` as the MCP server URL
+3. In each new chat: click **+** > **More** > **Developer Mode** to activate
+
+Available to Pro, Plus, Business, Enterprise, and Education accounts.
+
+### Codex CLI
+
+Add to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.quotewise]
+url = "https://mcp.quotewise.io/"
+```
+
+### Gemini CLI
+
+```bash
+gemini mcp add --transport http quotewise https://mcp.quotewise.io/
+```
+
+Or add to `~/.gemini/settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "quotewise": {
+      "httpUrl": "https://mcp.quotewise.io/"
+    }
+  }
+}
+```
+
+### Other MCP Clients
+
+Most MCP clients use the standard `mcpServers` format:
 
 ```json
 {
@@ -28,35 +100,21 @@ Add to your MCP client config:
 }
 ```
 
-### Config File Locations
-
-| Client | Config Path |
-|--------|-------------|
-| **Claude Desktop (macOS)** | `~/Library/Application Support/Claude/claude_desktop_config.json` |
-| **Claude Desktop (Windows)** | `%APPDATA%/Claude/claude_desktop_config.json` |
-| **Cursor** | Settings → Cursor Settings → MCP Servers |
-| **VS Code** | Depends on MCP extension |
-
 ## Authentication
 
-**Anonymous access** works immediately — 20 requests/hour, no signup needed.
+**Anonymous access** works immediately — 20 requests/day, no signup needed.
 
-**For higher limits**, get an API key:
-1. Visit [quotewise.io/developers/mcp](https://quotewise.io/developers/dashboard/)
-2. Create an API key
-3. The MCP server uses OAuth device flow — you'll be prompted on first use
-
-### Rate Limits
+**For higher limits**, [create a free account](https://quotewise.io/signup/) and then generate an API key from your [developer dashboard](https://quotewise.io/developers/dashboard/). The MCP server uses OAuth device flow — you'll be prompted on first use.
 
 See [quotewise.io/plans](https://quotewise.io/plans/) for current rate limits and pricing.
 
 ## Tools Available
 
-Tools for quote discovery, attribution lookup, and collection management:
+18 tools for quote discovery, attribution lookup, and collection management:
 
 ### Discovery
 - `quotes_about` — Semantic search by concept ("courage during setbacks")
-- `quotes_by` — Find quotes by a specific person  
+- `quotes_by` — Find quotes by a specific person
 - `quotes_from` — Find quotes from a specific source/book
 - `quotes_like` — Find similar quotes via vector similarity
 - `quotes_containing` — Exact phrase search
@@ -97,8 +155,6 @@ All search tools support powerful filters:
 
 ## Example Prompts
 
-Try these in Claude Desktop or your MCP client:
-
 - "Find me a short quote about persistence for a tweet"
 - "What did Einstein actually say about imagination?"
 - "Quotes by women about resilience"
@@ -108,6 +164,18 @@ Try these in Claude Desktop or your MCP client:
 ## Source Transparency
 
 Every quote includes **QuoteSightings** — citations showing where we found it. See sources before you share.
+
+## Troubleshooting
+
+**Connection refused or timeout:** Verify you can reach `https://mcp.quotewise.io/` from your network. Corporate firewalls may block the connection.
+
+**"Rate limit exceeded":** Anonymous access allows 20 requests/day. Sign up at [quotewise.io](https://quotewise.io) for higher limits.
+
+**"Invalid authentication token":** API tokens use the `qw_` prefix. Regenerate your key at [quotewise.io/developers/dashboard](https://quotewise.io/developers/dashboard/).
+
+**Claude Desktop not connecting:** Claude Desktop requires the `mcp-remote` bridge for remote servers. See the [Claude Desktop setup](#claude-desktop) section above.
+
+**Tools not appearing:** After adding the server config, restart your MCP client. Use the `ping` tool to verify connectivity.
 
 ## Links
 

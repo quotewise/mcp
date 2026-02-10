@@ -1,7 +1,8 @@
 {
   "mcpServers": {
     "quotewise": {
-      "url": "https://mcp.quotewise.io/"
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.quotewise.io/"]
     }
   }
 }
