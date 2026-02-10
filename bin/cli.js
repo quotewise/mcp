@@ -6,68 +6,55 @@ const path = require('path');
 const MCP_URL = 'https://mcp.quotewise.io/';
 
 const configs = {
+  'claude-code': {
+    name: 'Claude Code',
+    cliCommand: `claude mcp add --transport http quotewise ${MCP_URL}`,
+    instructions: 'Verify with: claude mcp list'
+  },
   'claude-desktop': {
     name: 'Claude Desktop',
     config: {
       mcpServers: {
         quotewise: {
-          url: MCP_URL
+          command: 'npx',
+          args: ['-y', 'mcp-remote', MCP_URL]
         }
       }
     },
     paths: {
       darwin: path.join(os.homedir(), 'Library/Application Support/Claude/claude_desktop_config.json'),
       win32: path.join(process.env.APPDATA || '', 'Claude/claude_desktop_config.json'),
-      linux: path.join(os.homedir(), '.config/claude/claude_desktop_config.json')
-    }
-  },
-  'cursor': {
-    name: 'Cursor',
-    config: {
-      mcpServers: {
-        quotewise: {
-          url: MCP_URL
-        }
-      }
+      linux: path.join(os.homedir(), '.config/Claude/claude_desktop_config.json')
     },
-    instructions: 'Settings → Cursor Settings → MCP Servers → Add Server'
+    note: 'Claude Desktop requires the mcp-remote bridge for remote servers (requires Node.js).'
   },
-  'vscode': {
-    name: 'VS Code (with MCP extension)',
-    config: {
-      mcpServers: {
-        quotewise: {
-          url: MCP_URL
-        }
-      }
-    },
-    instructions: 'Add to your MCP extension settings'
+  'chatgpt': {
+    name: 'ChatGPT Desktop',
+    instructions: [
+      'Settings > Connectors > Advanced > enable Developer Mode',
+      `Click Create and enter: ${MCP_URL}`,
+      'In each new chat: + > More > Developer Mode to activate'
+    ].join('\n   ')
   },
-  'openai': {
-    name: 'ChatGPT / OpenAI',
-    config: {
-      mcpServers: {
-        quotewise: {
-          url: MCP_URL
-        }
-      }
-    },
-    instructions: 'Add via ChatGPT MCP settings or API configuration'
+  'codex': {
+    name: 'Codex CLI',
+    cliCommand: `codex mcp add quotewise --url ${MCP_URL}`,
+    instructions: 'Verify with: codex mcp list'
   },
   'gemini': {
     name: 'Gemini CLI',
+    cliCommand: `gemini mcp add --transport http quotewise ${MCP_URL}`,
     config: {
       mcpServers: {
         quotewise: {
-          transport: 'http',
-          url: MCP_URL
+          httpUrl: MCP_URL
         }
       }
     },
-    instructions: 'Add to ~/.gemini/settings.json'
+    instructions: 'Or add to ~/.gemini/settings.json'
   },
   'generic': {
-    name: 'Generic MCP Client',
+    name: 'Other MCP Clients',
     config: {
       mcpServers: {
         quotewise: {
@@ -81,32 +68,57 @@ const configs = {
 function printHeader() {
   console.log(`
 ╔═══════════════════════════════════════════════════════════════╗
-║                   🔮 Quotewise MCP Setup                       ║
-║         Semantic quote search for AI assistants                ║
+║                   Quotewise MCP Setup                        ║
+║         Semantic quote search for AI assistants               ║
 ╚═══════════════════════════════════════════════════════════════╝
 `);
 }
 
 function printConfig(clientKey) {
   const client = configs[clientKey] || configs['generic'];
-  
-  console.log(`📱 ${client.name}\n`);
-  console.log('Add this to your MCP configuration:\n');
-  console.log('─'.repeat(60));
-  console.log(JSON.stringify(client.config, null, 2));
-  console.log('─'.repeat(60));
-  
+
+  console.log(`  ${client.name}\n`);
+
+  if (client.cliCommand) {
+    console.log('Run this command:\n');
+    console.log('  ' + client.cliCommand);
+    if (client.config) {
+      console.log('');
+    }
+  }
+
+  if (client.config) {
+    if (client.cliCommand) {
+      console.log('Or add this to your config:\n');
+    } else {
+      console.log('Add this to your MCP configuration:\n');
+    }
+    console.log('─'.repeat(60));
+    console.log(JSON.stringify(client.config, null, 2));
+    console.log('─'.repeat(60));
+  }
+
+  if (client.configText) {
+    console.log('');
+    console.log('─'.repeat(60));
+    console.log(client.configText);
+    console.log('─'.repeat(60));
+  }
+
   if (client.paths) {
     const configPath = client.paths[process.platform];
     if (configPath) {
-      console.log(`\n📁 Config file location:`);
+      console.log(`\n  Config file location:`);
       console.log(`   ${configPath}`);
     }
   }
-  
+
   if (client.instructions) {
-    console.log(`\n📝 Instructions:`);
-    console.log(`   ${client.instructions}`);
+    console.log(`\n  ${client.instructions}`);
+  }
+
+  if (client.note) {
+    console.log(`\n  Note: ${client.note}`);
   }
 }
 
@@ -114,11 +126,11 @@ function printFooter() {
   console.log(`
 ═══════════════════════════════════════════════════════════════
 
-🆓 Anonymous access: 100 requests/hour (no signup needed)
-🔑 Get API key for more: https://quotewise.io/developers/dashboard/
+Anonymous access: 20 requests/day (no signup needed)
+Create a free account for higher limits: https://quotewise.io/signup/
 
-📚 Full docs: https://quotewise.io/developers/mcp/
-🤖 18 tools: quotes_about, quotes_by, who_said, collections, and more
+Full docs: https://quotewise.io/developers/mcp/
+18 tools: quotes_about, quotes_by, who_said, collections, and more
 
 Need help? q@quotewise.io
 `);
@@ -134,17 +146,18 @@ Commands:
   help              Show this help message
 
 Clients:
+  claude-code       Claude Code CLI
   claude-desktop    Claude Desktop app
-  cursor            Cursor IDE
-  vscode            VS Code with MCP extension
-  openai            ChatGPT / OpenAI
+  chatgpt           ChatGPT Desktop
+  codex             Codex CLI (OpenAI)
   gemini            Gemini CLI
-  generic           Generic MCP client (default)
+  generic           Other MCP clients (default)
 
 Examples:
   npx @quotewise/mcp setup
+  npx @quotewise/mcp setup claude-code
   npx @quotewise/mcp setup claude-desktop
-  npx @quotewise/mcp setup cursor
+  npx @quotewise/mcp setup gemini
 `);
 }
 
