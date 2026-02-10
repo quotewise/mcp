@@ -61,12 +61,11 @@ Available to Pro, Plus, Business, Enterprise, and Education accounts.
 
 ### Codex CLI
 
-Add to `~/.codex/config.toml`:
-
-```toml
-[mcp_servers.quotewise]
-url = "https://mcp.quotewise.io/"
+```bash
+codex mcp add quotewise --url https://mcp.quotewise.io/
 ```
+
+Verify with `codex mcp list`.
 
 ### Gemini CLI
 

@@ -38,8 +38,8 @@ const configs = {
   },
   'codex': {
     name: 'Codex CLI',
-    configText: `[mcp_servers.quotewise]\nurl = "${MCP_URL}"`,
-    instructions: 'Add to ~/.codex/config.toml'
+    cliCommand: `codex mcp add quotewise --url ${MCP_URL}`,
+    instructions: 'Verify with: codex mcp list'
   },
   'gemini': {
     name: 'Gemini CLI',
