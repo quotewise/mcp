@@ -5,6 +5,7 @@ Semantic quote search for AI assistants. Find quotes by meaning, verify attribut
 [![npm version](https://img.shields.io/npm/v/@quotewise/mcp.svg)](https://www.npmjs.com/package/@quotewise/mcp)
 [![npm downloads](https://img.shields.io/npm/dm/@quotewise/mcp.svg)](https://www.npmjs.com/package/@quotewise/mcp)
 [![GitHub repo](https://img.shields.io/github/stars/quotewise/mcp.svg)](https://github.com/quotewise/mcp)
+[![mcptry](https://mcptry.com/badge/io.github.quotewise/mcp)](https://mcptry.com/servers/io.github.quotewise/mcp)
 
 ## Quick Setup
 
