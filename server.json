@@ -2,12 +2,25 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.quotewise/mcp",
   "title": "Quotewise",
-  "description": "Semantic quote search with visible sources. Find quotes by meaning, verify attributions.",
+  "description": "Quote finder with 800K quotes. Find quotes by meaning, verify attributions.",
+  "websiteUrl": "https://quotewise.io/",
+  "icons": [
+    {
+      "src": "https://quotewise.io/static/brand/web/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": ["512x512"]
+    },
+    {
+      "src": "https://quotewise.io/static/brand/web/icon-192.png",
+      "mimeType": "image/png",
+      "sizes": ["192x192"]
+    }
+  ],
   "repository": {
     "url": "https://github.com/quotewise/mcp",
     "source": "github"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "remotes": [
     {
       "type": "streamable-http",
@@ -15,7 +28,7 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "Optional API key for higher rate limits. Format: Bearer YOUR_API_KEY. Anonymous access provides 100 requests/hour.",
+          "description": "Optional API key for higher rate limits. Format: Bearer YOUR_API_KEY. Anonymous access provides 20 requests/day.",
           "isRequired": false,
           "isSecret": true
         }

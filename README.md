@@ -110,7 +110,7 @@ See [quotewise.io/plans](https://quotewise.io/plans/) for current rate limits an
 
 ## Tools Available
 
-18 tools for quote discovery, attribution lookup, and collection management:
+21 tools for quote discovery, attribution lookup, and collection management:
 
 ### Discovery
 - `quotes_about` — Semantic search by concept ("courage during setbacks")
@@ -128,14 +128,16 @@ See [quotewise.io/plans](https://quotewise.io/plans/) for current rate limits an
 - `sources` — Search/browse books, speeches, works
 - `quote_relations` — Find related quotes (similar themes, same author, etc.)
 - `search_proverbs` — Search proverb database for wise sayings
+- `tags_like` — Map a concept to the tags that exist, for tag filters
 
 ### Collections (requires auth)
 - `collection` — Create, list, update, delete collections
 - `collection_quotes` — Add/remove quotes from collections
 
 ### Utilities
-- `ping` — Health check (test connectivity)
-- `auth_status` — Check authentication status and rate limits
+- `status` — Check connectivity, authentication status, and database size
+- `cite_quote` — Render a citation for a quote
+- `report_quote` — Report an issue across one or more quotes for moderation
 - `flag_content` — Flag inappropriate or misattributed quotes
 - `propose_edit` — Suggest corrections to quote text or attribution
 
@@ -175,7 +177,7 @@ Every quote includes **QuoteSightings** — citations showing where we found it.
 
 **Claude Desktop not connecting:** Claude Desktop requires the `mcp-remote` bridge for remote servers. See the [Claude Desktop setup](#claude-desktop) section above.
 
-**Tools not appearing:** After adding the server config, restart your MCP client. Use the `ping` tool to verify connectivity.
+**Tools not appearing:** After adding the server config, restart your MCP client. Use the `status` tool to verify connectivity.
 
 ## Links
 
