@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.quotewise/mcp",
-  "title": "Quotewise",
-  "description": "Quote finder with 800K quotes. Find quotes by meaning, verify attributions.",
+  "title": "Quotewise: Quotes & Quotations",
+  "description": "Quote finder with 800K quotations. Find quotes by meaning, verify attributions.",
   "websiteUrl": "https://quotewise.io/",
   "icons": [
     {
@@ -20,7 +20,7 @@
     "url": "https://github.com/quotewise/mcp",
     "source": "github"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "remotes": [
     {
       "type": "streamable-http",
